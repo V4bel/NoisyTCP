@@ -52,7 +52,7 @@ Applying the `4e2b3ef19e0e` patch is the priority, but if it is difficult to app
 
 ## 1. Disable SYN cookies
 
-This blocks the path where a request socket is reconstructed through a SYN cookie.
+This blocks the path where a request socket is reconstructed through a SYN cookie. The default value of this setting is `1` on most Linux distributions.
 
 ```
 sudo sysctl -w net.ipv4.tcp_syncookies=0
@@ -78,6 +78,6 @@ That said, as described above, the race window is narrow, so triggering it again
 
 ## 2. So is this a TCP RCE?
 
-Not yet. So far I have only written a very limited, lab-specific exploit that targets VM servers. I am still researching a general-purpose exploit. 
+Not yet. and basically, no. So far I have only written a very limited, lab-specific exploit that targets VM servers. I am still researching a general-purpose exploit. 
 
 But remote DoS can be achieved without much difficulty.
