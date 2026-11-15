@@ -64,3 +64,20 @@ This setting is managed per network namespace. It has to be applied to "each" co
 
 This vulnerability requires different RX contexts to race concurrently. Reducing the RX queues of the interface where external packets come in to one and disabling RPS and RFS can block the race.
 
+# FAQ
+
+## 1. Does the victim server need special configuration?
+
+No. The race condition only needs a server with two or more RX queues, or with RPS enabled. 
+
+Many other bugs trigger only when a rarely used configuration, a netfilter rule or a specific socket is set up. This one triggers even when the server does nothing more than call listen(). 
+
+Because of this, it can be triggered on any Linux server that receives the attacker's TCP packets directly, such as servers running Nginx, Apache, SSH or a Proxy. 
+
+That said, as described above, the race window is narrow, so triggering it against a quiet bare-metal server can take a long time.
+
+## 2. So is this a TCP RCE?
+
+Not yet. So far I have only written a very limited, lab-specific exploit that targets VM servers. I am still researching a general-purpose exploit. 
+
+But remote DoS can be achieved without much difficulty.
