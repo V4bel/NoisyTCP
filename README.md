@@ -70,7 +70,7 @@ This vulnerability requires different RX contexts to race concurrently. Reducing
 
 No. The race condition only needs a server with two or more RX queues, or with RPS enabled. 
 
-Many other bugs trigger only when a rarely used configuration, a netfilter rule or a specific socket is set up. This one triggers even when the server does nothing more than call listen(). 
+Many other bugs trigger only when a rarely used configuration, a netfilter rule or a specific socket is set up. This one triggers even when the server does nothing more than call `listen()`. 
 
 Because of this, it can be triggered on any Linux server that receives the attacker's TCP packets directly, such as servers running Nginx, Apache, SSH or a Proxy. 
 
