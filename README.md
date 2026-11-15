@@ -6,7 +6,7 @@ This report is a security advisory for the **NoisyTCP (CVE-2026-99288)** vulnera
 
 To trigger this vulnerability, a stale ehash lookup and the freeing and reallocation of an existing request socket must proceed concurrently in different RX contexts. Packet processing has to be spread out by using the difference in receive hash between IPv4 fragments and regular TCP packets, so it can be triggered against servers that have two or more RX queues, or where RPS distributes packets across multiple CPUs.
 
-That is, since this vulnerability can be triggered against "plain" TCP listeners, it can be triggered pre-auth and remotely against servers that TCP packets sent by an attacker can reach directly, such as Nginx, Apache, and SSH servers running with their "default" configuration.
+That is, since this vulnerability can be triggered against **"plain"** TCP listeners, it can be triggered pre-auth and remotely against servers that TCP packets sent by an attacker can reach directly, such as Nginx, Apache, and SSH servers running with their **"default"** configuration.
 
 > [!NOTE]
 > The embargo agreed upon after reporting this vulnerability to linux-distros@vs.openwall.org has ended, so this NoisyTCP document is now being published.
@@ -44,7 +44,7 @@ The affected range of NoisyTCP (CVE-2026-99288) is as follows.
 - Introduced: `079096f103fa` (2015-10-03)
 - Fixed: `4e2b3ef19e0e` (2026-11-03)
 
-That is, this vulnerability had been latent in the Linux kernel for about "11 years" and affects almost all Linux distributions.
+That is, this vulnerability had been latent in the Linux kernel for about **"11 years"** and affects almost all Linux distributions.
 
 # Mitigations
 
@@ -58,7 +58,7 @@ This blocks the path where a request socket is reconstructed through a SYN cooki
 sudo sysctl -w net.ipv4.tcp_syncookies=0
 ```
 
-This setting is managed per network namespace. It has to be applied to "each" container that uses a separate network namespace. Disabling it lowers the protection against SYN floods.
+This setting is managed per network namespace. It has to be applied to **"each"** container that uses a separate network namespace. Disabling it lowers the protection against SYN floods.
 
 ## 2. Serialize to a single RX queue
 
