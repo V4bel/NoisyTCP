@@ -1,4 +1,4 @@
-# NoisyTCP: Linux Kernel TCP Pre-auth Remote Corruption (CVE-2026-99288)
+# NoisyTCP: Linux Kernel TCP Pre-auth Remote Corruption
 
 # Abstract
 
