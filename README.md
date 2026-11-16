@@ -66,7 +66,7 @@ This vulnerability requires different RX contexts to race concurrently. Reducing
 
 # FAQ
 
-## 1. Does the victim server need special configuration?
+## Does the victim server need special configuration?
 
 No. The race condition only needs a server with two or more RX queues, or with RPS enabled. 
 
@@ -76,7 +76,7 @@ Because of this, it can be triggered on any Linux server that receives the attac
 
 That said, as described above, the race window is narrow, so triggering it against a quiet bare-metal server can take a long time.
 
-## 2. So is this a TCP RCE?
+## So is this a TCP RCE?
 
 Not yet. and basically, no. So far I have only written a very limited, lab-specific exploit that targets VM servers. I am still researching a general-purpose exploit. 
 
